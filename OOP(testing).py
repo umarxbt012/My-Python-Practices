@@ -10,7 +10,7 @@ class Car:
     def drive(self):
         print(f"{self.brand} has started")
     def accelerate(self):
-        if self.fuel<0:
+        if self.fuel<=0:
             print("no fuel")
             return
         #the prescence of return exits the method immediately
@@ -24,12 +24,16 @@ class Car:
         if self.speed <= 0:
             self.speed=0
         print(f"{self.brand} has deccelerated by 10 and speed now is {self.speed} ")
+        if self.speed==0:
+            print(f"{self.brand} has stopped!")
+            return
+            
     def refuel(self,amount):
-        self.fuel+=amount
         maxFuel=100
         needed_fuel=maxFuel-self.fuel
         if amount>needed_fuel:
             change=amount-needed_fuel
+            self.fuel=maxFuel
             print(f"it has exceeded the fuel needed here is your change:{change} ")
         else:
             self.fuel+=amount
@@ -48,6 +52,12 @@ car1=Car("toyota","red","2007")
 car1.accelerate()
 car1.deccelerate()
 car1.refuel(20)
+car1.display()
+car2=Car("Ferrari","Indigo","2023")
+car2.accelerate()
+car2.deccelerate()
+car2.refuel(20)
+car2.display()
 
         
         
